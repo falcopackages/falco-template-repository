@@ -9,5 +9,5 @@ Add a one-line description of your repository, then click "Create repository fro
 ![image](https://github.com/user-attachments/assets/2f43ce91-0a11-4dc7-a274-bd4f30dafffb)
 
 
-Once created, your new repository will execute a GitHub Actions workflow that uses cookiecutter to rewrite the repository to the desired state. This make take 30 seconds or so.
+Once created, your new repository will execute a GitHub Actions workflow that uses falco-cli to rewrite the repository to the desired state. This make take 30 seconds or so.
 
