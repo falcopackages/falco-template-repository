@@ -21,8 +21,7 @@ jobs:
         uses: astral-sh/setup-uv@v3
 
       - name: Install falco-cli
-        run: uv tool install falco-cli --pre -c next-release
-
+        run: uv tool install falco-cli --pre
 
       - uses: actions/github-script@v7
         id: fetch-repo-and-user-details
@@ -63,7 +62,7 @@ jobs:
           export USERNAME="$(echo $INFO | jq -r .repository.owner.login)"
           # Run falco-cli
           pushd /tmp
-          falco start-project $REPO_NAME
+          falco start-project $REPO_NAME -c next-release
           popd
           # Move generated content to root directory of repo
           mv /tmp/$REPO_NAME/* .
