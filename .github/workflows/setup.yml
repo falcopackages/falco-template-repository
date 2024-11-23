@@ -21,7 +21,7 @@ jobs:
         uses: astral-sh/setup-uv@v3
 
       - name: Install falco-cli
-        run: uv tool install falco-cli --pre
+        run: uv tool install falco-cli --pre -c next-release
 
 
       - uses: actions/github-script@v7
@@ -71,6 +71,8 @@ jobs:
           mv /tmp/$REPO_NAME/.gitignore .
           # Delete the setup.yml workflow, it has served its purpose
           rm .github/workflows/setup.yml
+          # format the code
+          just lint || true
 
       - name: Force push new repo contents
         uses: stefanzweifel/git-auto-commit-action@v4
