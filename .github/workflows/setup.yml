@@ -36,6 +36,7 @@ jobs:
                   login
                   ... on User {
                     name
+                    email
                   }
                   ... on Organization {
                     name
@@ -51,19 +52,18 @@ jobs:
             console.log(result)
             return result
 
-      - name: Rebuild contents using cookiecutter
+      - name: Rebuild contents using falco-cli
         env:
           INFO: ${{ steps.fetch-repo-and-user-details.outputs.result }}
         run: |
           export REPO_NAME=$(echo $INFO | jq -r '.repository.name')
-          # Run cookiecutter
+          export AUTHOR_NAME=$(echo $INFO | jq -r .repository.owner.name)
+          export AUTHOR_EMAIL=$(echo $INFO | jq -r .repository.owner.email)
+          export DESCRIPTION="$(echo $INFO | jq -r .repository.description | sed 's/\"/\\\"/g')"
+          export USERNAME="$(echo $INFO | jq -r .repository.owner.login)"
+          # Run falco-cli
           pushd /tmp
           falco start-project $REPO_NAME
-          #cookiecutter gh:simonw/python-lib --no-input \
-          #  lib_name=$REPO_NAME \
-          #  description="$(echo $INFO | jq -r .repository.description | sed 's/\"/\\\"/g')" \
-          #  github_username="$(echo $INFO | jq -r .repository.owner.login)" \
-          #  author_name="$(echo $INFO | jq -r .repository.owner.name)"
           popd
           # Move generated content to root directory of repo
           mv /tmp/$REPO_NAME/* .
