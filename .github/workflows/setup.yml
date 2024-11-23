@@ -21,7 +21,7 @@ jobs:
         uses: astral-sh/setup-uv@v3
 
       - name: Install falco-cli
-        run: uv tool install falco-cli
+        run: uv tool install falco-cli --with djlint
 
 
       - uses: actions/github-script@v7
