@@ -71,11 +71,10 @@ jobs:
           falco start-project $REPO_NAME -c next-release
           popd
           # Move generated content to root directory of repo, including hidden files
-          mv /tmp/$REPO_NAME/.github .gh
+          mv /tmp/$REPO_NAME/.github .rename_to_github
           rsync -avz --remove-source-files /tmp/$REPO_NAME/ .
           # Delete the setup.yml workflow, it has served its purpose
           rm .github/workflows/setup.yml
-          mv .gh/* .github/ && rm -rf .gh
           # format the code
           falco fmt || true
 
