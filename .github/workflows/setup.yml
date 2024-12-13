@@ -11,9 +11,7 @@ jobs:
   setup-repo:
     if: ${{ github.repository != 'falcopackages/starter-template' }}
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      workflows: write
+    permissions: write-all
     steps:
       - uses: actions/checkout@v4
         with:
