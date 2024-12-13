@@ -6,6 +6,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   setup-repo:
@@ -79,3 +80,4 @@ jobs:
         with:
           commit_message: "Initial commit"
           push_options: --force
+          token: ${{ secrets.GITHUB_TOKEN }}
