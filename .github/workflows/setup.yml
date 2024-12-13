@@ -76,7 +76,7 @@ jobs:
           # Delete the setup.yml workflow, it has served its purpose
           rm .github/workflows/setup.yml
           # format the code
-          just lint || true
+          falco fmt || true
 
       - name: Force push new repo contents
         uses: stefanzweifel/git-auto-commit-action@v4
