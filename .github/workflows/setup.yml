@@ -67,10 +67,8 @@ jobs:
           pushd /tmp
           falco start-project $REPO_NAME -c next-release
           popd
-          # Move generated content to root directory of repo
-          mv /tmp/$REPO_NAME/* .
-          # And .gitignore too:
-          mv /tmp/$REPO_NAME/.gitignore .
+          # Move generated content to root directory of repo, including hidden files
+          mv /tmp/$REPO_NAME/{.,}* .
           # Delete the setup.yml workflow, it has served its purpose
           rm .github/workflows/setup.yml
           # format the code
