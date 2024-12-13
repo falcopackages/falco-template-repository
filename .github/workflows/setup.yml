@@ -75,7 +75,7 @@ jobs:
           rsync -avz --remove-source-files /tmp/$REPO_NAME/ .
           # Delete the setup.yml workflow, it has served its purpose
           rm .github/workflows/setup.yml
-          mv .gh .github
+          mv .gh/* .github/ && rm -rf .gh
           # format the code
           falco fmt || true
 
