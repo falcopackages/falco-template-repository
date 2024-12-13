@@ -71,7 +71,10 @@ jobs:
           falco start-project $REPO_NAME -c next-release
           popd
           # Move generated content to root directory of repo, including hidden files
+          mv /tmp/$REPO_NAME/.github .gh
           rsync -avz --remove-source-files /tmp/$REPO_NAME/ .
+          # Delete the setup.yml workflow, it has served its purpose
+          rm .github/workflows/setup.yml
           # format the code
           just lint || true
 
@@ -80,4 +83,3 @@ jobs:
         with:
           commit_message: "Initial commit"
           push_options: --force
-          token: ${{ secrets.GITHUB_TOKEN }}
