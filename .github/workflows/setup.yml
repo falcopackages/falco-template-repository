@@ -11,6 +11,8 @@ jobs:
   setup-repo:
     if: ${{ github.repository != 'falcopackages/starter-template' }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -51,6 +53,7 @@ jobs:
               name: context.repo.repo
             }
             const result = await github.graphql(query, variables)
+            result.repository.owner.email = result.repository.owner.email || "tobidegnon@proton.me";
             console.log(result)
             return result
 
