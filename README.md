@@ -10,4 +10,7 @@ Add a one-line description of your repository, then click "Create repository fro
 
 
 Once created, your new repository will execute a GitHub Actions workflow that uses falco-cli to rewrite the repository to the desired state. This make take 30 seconds or so.
+Here is the corrected note with fixed typos and formulation mistakes:
 
+> [!IMPORTANT]
+> This template repo will run a first action to override the content of the repo with your Falco project, but it's not currently possible to override the `.github` folder without using a personal access token. Therefore, there will be a `.rename_to_.github` folder that you need to rename to `.github`. You can do it manually, but it will be done automatically the first time you run `just setup` to set up the project locally.
