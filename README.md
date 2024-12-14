@@ -2,7 +2,10 @@
 
 This GitHub [template repository](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/creating-a-repository-from-a-template) can be used to create a new falco project, based on [https://github.com/falcopackages/starter-template](https://github.com/falcopackages/starter-template).
 
-Start here: https://github.com/falcopackages/falco-template-repository/generate
+> [!WARNING]
+> Project are currently generated using the `next-release` branch.
+
+[![Generate a new project](https://img.shields.io/badge/Generate%20a%20new%20project-blue?style=for-the-badge)](https://github.com/falcopackages/falco-template-repository/generate) 
 
 Add a one-line description of your repository, then click "Create repository from template".
 
